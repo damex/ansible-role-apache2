@@ -1,0 +1,19 @@
+---
+- name: ensure apache2 packages
+  include_role:
+    name: "damex.package"
+  vars:
+    package_packages:
+      - name: "{{ apache2_package_name }}"
+        state: "{{ apache2_package_state }}"
+
+- name: ensure apache2 module packages
+  include_role:
+    name: "damex.package"
+  vars:
+    package_packages:
+      - name: "libapache2-mod-{{ apache2_module_name }}"
+        state: "{{ apache2_module_packages_state }}"
+  loop: "{{ apache2_module_packages }}"
+  loop_control:
+    loop_var: "apache2_module_name"

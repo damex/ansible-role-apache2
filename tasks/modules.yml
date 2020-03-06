@@ -1,0 +1,6 @@
+---
+- name: ensure apache2 modules
+  apache2_module:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default(apache2_module_state) }}"
+  loop: "{{ apache2_modules }}"

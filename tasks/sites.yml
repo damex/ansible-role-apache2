@@ -1,0 +1,19 @@
+---
+- name: ensure apache2 default sites
+  file:
+    path: "{{ item }}"
+    state: "absent"
+  become: true
+  loop:
+    - "{{ apache2_sites_available_dir }}/000-default.conf"
+    - "{{ apache2_sites_available_dir }}/default-ssl.conf"
+    - "{{ apache2_sites_enabled_dir }}/000-default.conf"
+    - "{{ apache2_sites_enabled_dir }}/default-ssl.conf"
+
+- name: ensure apache2 sites
+  file:
+    src: "{{ apache2_sites_available_dir }}/{{ item }}.conf"
+    dest: "{{ apache2_sites_enabled_dir }}/{{ item }}.conf"
+    state: "link"
+  become: true
+  loop: "{{ apache2_sites }}"

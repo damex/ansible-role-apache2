@@ -1,0 +1,10 @@
+---
+apache2_package_name: "apache2"
+apache2_package_state: "present"
+apache2_module_packages: []
+apache2_module_packages_state: "present"
+apache2_modules: []
+apache2_module_state: "present"
+apache2_sites: []
+apache2_sites_available_dir: "/etc/apache2/sites-available"
+apache2_sites_enabled_dir: "/etc/apache2/sites-enabled"
