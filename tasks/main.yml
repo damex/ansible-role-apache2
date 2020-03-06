@@ -1,0 +1,8 @@
+---
+- name: ensure apache2
+  block:
+    - import_tasks: packages.yml
+    - import_tasks: modules.yml
+    - import_tasks: sites.yml
+  tags:
+    - apache2
